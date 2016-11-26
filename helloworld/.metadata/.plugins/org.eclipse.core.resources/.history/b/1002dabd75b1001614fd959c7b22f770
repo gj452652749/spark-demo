@@ -1,0 +1,5 @@
+package com.gj.thread
+
+package object wait {
+  
+}

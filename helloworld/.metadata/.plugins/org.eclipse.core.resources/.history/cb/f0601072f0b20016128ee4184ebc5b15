@@ -1,0 +1,13 @@
+package com.test
+
+object ActorTest {
+  def actorRun {
+    var actor2=actor{
+      while(true){
+        receive {
+          
+        }
+      }
+    }
+  }
+}

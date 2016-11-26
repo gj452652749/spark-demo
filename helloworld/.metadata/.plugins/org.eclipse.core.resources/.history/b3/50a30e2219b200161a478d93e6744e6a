@@ -1,0 +1,28 @@
+package com.gj.thread.wait
+
+import com.sun.xml.internal.rngom.binary.SchemaBuilderImpl.Override
+
+object ch2{
+  def thread(body:=>Unit):Thread={
+    var t=new Thread{
+      override def run()=body
+    }
+    t.start()
+    t
+  }
+}
+object SynchronizedGuardedBlocks extends App {
+  val lock = new AnyRef
+  var message: Option[String] = None
+  val greeter = thread {
+    lock.synchronized {
+      while (message == None) lock.wait()
+      log(message.get)
+    }
+  }
+  lock.synchronized {
+    message = Some("Hello!")
+    lock.notify()
+  }
+  greeter.join()
+}

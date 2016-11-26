@@ -1,0 +1,9 @@
+package com.test
+import scala.math._
+object FunctionTest {
+  def main {
+    val fun = ceil _;
+    var num=3.14
+    println(fun(num));
+  }
+}
